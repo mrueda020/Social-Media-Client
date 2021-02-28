@@ -11,7 +11,7 @@ function NavBar() {
   };
   return (
     <>
-      <div className="ui secondary pointing menu massive red">
+      <div className="ui secondary  stackable pointing menu massive red">
         <Link
           name="home"
           className={active === "home" ? "ui item active" : "ui item"}
