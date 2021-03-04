@@ -9,7 +9,7 @@ function Home() {
 
   return (
     <div>
-      <h2 className="ui center">Recent Posts</h2>
+      <h2 className="ui center text-title">Recent Posts</h2>
       <Grid stackable columns={3}>
         {loading ? (
           <h1>Loading posts....</h1>
