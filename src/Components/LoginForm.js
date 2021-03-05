@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
 import { withRouter } from "react-router-dom";
+
+import { AuthContext } from "../Context/auth";
+
 function LoginForm(props) {
+  const context = useContext(AuthContext);
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -15,7 +19,8 @@ function LoginForm(props) {
   };
 
   const [addUser, { loading }] = useMutation(LOGIN_USER, {
-    update(_, result) {
+    update(_, { data: { login: userData } }) {
+      context.login(userData);
       props.history.push("/");
     },
     onError(err) {
