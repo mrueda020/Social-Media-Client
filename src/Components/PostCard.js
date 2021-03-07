@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import moment from "moment";
 import LikeButton from "../Components/LikeButton";
+
+import DeleteButton from "./DeleteButton";
+import { Link } from "react-router-dom";
 function PostCard({
+  user,
   post: { body, createdAt, id, username, likeCount, commentCount, likes },
 }) {
   return (
@@ -12,7 +16,9 @@ function PostCard({
           src="https://semantic-ui.com/images/avatar2/large/matthew.png"
         />
         <div className="header">{username}</div>
-        <div className="meta"> {moment(createdAt).fromNow(true)}</div>
+        <Link to={`/posts/${id}`} className="meta">
+          {moment(createdAt).fromNow(true)}
+        </Link>
         <div className="description">{body}</div>
       </div>
       <div className="extra content ">
@@ -24,9 +30,12 @@ function PostCard({
           <a className="ui basic left pointing blue label">{commentCount}</a>
         </div>
 
-        <div className="ui red button" style={{ float: "right" }}>
-          <i style={{ margin: 0 }} className="trash icon"></i>
-        </div>
+        {user && user.username === username && (
+          <DeleteButton
+            postId={id}
+            callback={() => window.location.reload()}
+          ></DeleteButton>
+        )}
       </div>
     </div>
   );

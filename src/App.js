@@ -8,6 +8,7 @@ import AuthRoute from "./Util/AuthRoute";
 import Home from "./Pages/Home";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
+import SinglePost from "./Pages/SinglePost";
 
 import NavBar from "./Components/NavBar";
 
@@ -20,6 +21,7 @@ function App() {
           <Route exact path="/" component={Home}></Route>
           <AuthRoute exact path="/login" component={Login}></AuthRoute>
           <AuthRoute exact path="/register" component={Register}></AuthRoute>
+          <Route exact path="/posts/:postId" component={SinglePost}></Route>
         </div>
       </Router>
     </AuthProvider>

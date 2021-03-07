@@ -25,10 +25,7 @@ function PostForm() {
     e.preventDefault();
     createPost();
     setPost({ body: "" });
-    console.log(typeof error === "undefined");
-    if (!(typeof error === "undefined")) {
-      setTimeout(() => window.location.reload(), 5000);
-    }
+    window.location.reload();
   };
 
   const handleChange = (e) => {
@@ -48,7 +45,9 @@ function PostForm() {
           />
         </div>
         <div className="field">
-          <button className="ui button red">Post</button>
+          <button disabled={post.body.trim() === ""} className="ui button red">
+            Post
+          </button>
         </div>
       </form>
       {error && (
