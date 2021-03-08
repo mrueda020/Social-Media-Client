@@ -42,11 +42,11 @@ function SinglePost(props) {
       commentCount = data.getPost.commentCount;
       comments = data.getPost.comments;
     } else {
-      props.history.push("/");
+      window.location = "/";
     }
   }
   const callBack = () => {
-    props.history.push("/");
+    window.location = "/";
   };
 
   return (
